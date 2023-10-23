@@ -1,92 +1,74 @@
-import java.util.*;
+import java.util.Scanner;
 
 abstract class Shape{
 
-    static   Scanner in =new Scanner(System.in);
+    Scanner in =new Scanner(System.in);
     double a;
     double b;
 
-    public abstract void  calculate_area();
-
+    abstract void  calculate_area();
+    abstract void input_details();
 
 }
 
 //assume that given triangle is right angle triangle
 class Triangle extends Shape{
 
-   public  void input_data(){
+    void input_details(){
 
-       System.out.print("Enter length of triangle : ");
+        System.out.print("Enter base of triangle : ");
         double length=in.nextDouble();
 
-       System.out.print("Enter height of triangle : ");
+        System.out.print("Enter height of triangle : ");
         double height=in.nextDouble();
 
-
-
-        this.a=length;
-        this.b=height;
-
-
+        this.a = length;
+        this.b = height;
     }
 
-    public void calculate_area(){
+     void calculate_area(){
 
-        double area=0.5*a*b;
-        System.out.println("Area of triangle is : "+area );
-    }
-
-
-
-}
-
-
-class Rectangle extends Shape{
-
-
-   public  void input_data(){
-
-       System.out.print("Enter length of Rectangle : ");
-        double length=in.nextDouble();
-
-
-       System.out.print("Enter breadth of Rectangle : ");
-        double breadth=in.nextDouble();
-
-        this.a=length;
-        this.b=breadth;
-
-
-
-
-    };
-
-    public void calculate_area(){
-
-        double area=a*b;
-        System.out.println("Area of rectangle is : "+area );
+        double area = 0.5 * a * b;
+        System.out.println("Area of triangle is : "+area  );
     }
 
 }
 
-public class ass4 {
+class Rectangle extends Shape {
 
-    public static void main(String[] args) {
+    void input_details() {
 
-        Triangle t=new Triangle();
-        t.input_data();
+        System.out.print("Enter length of Rectangle : ");
+        double length = in.nextDouble();
+
+        System.out.print("Enter breadth of Rectangle : ");
+        double breadth = in.nextDouble();
+
+        this.a = length;
+        this.b = breadth;
+
+    }
+
+    void calculate_area() {
+
+        double area = a * b;
+        System.out.println("Area of rectangle :" + area);
+    }
+}
+
+public class mock {
+    public static void main (String[] args){
+
+        Shape t = new Triangle();
+        t.input_details();
         t.calculate_area();
+          t = new Rectangle();
 
+        t.input_details();
+        t.calculate_area();
         System.out.println();
-
-        Rectangle r=new Rectangle();
-        r.input_data();
-        r.calculate_area();
-
-
-
-       
-
-
     }
 }
+
+
+
